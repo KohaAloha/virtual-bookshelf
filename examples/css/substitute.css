@@ -1,0 +1,92 @@
+.shelf-image-container {
+	margin: 0 auto;
+	padding: 0 0 8px 0;
+	text-decoration: none;
+}
+.shelf-image-container {
+	width: 158px;
+	height: 200px;
+	margin: 20px 5px 0 5px;
+	text-align: center;
+}
+.shelf-image-container image {
+	border: none;
+}
+
+.shelf-image-substitute {
+	overflow: hidden;
+	position: relative;
+	color: white;
+	font-family: Verdana, Verdana, Geneva, sans-serif;
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	padding: 0 6px 0 14px;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.shelf-image-substitute {
+	width: 125px;
+	height: 200px;
+	font-size: 18px;
+}
+.shelf-image-bg {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-size: 100% 100%;
+}
+.shelf-image-title,
+.shelf-image-subtitle,
+.shelf-image-authors {
+	display: inline-block;
+	z-index: 0;
+}
+.shelf-image-title {
+	position: relative;
+	padding-top: 0.5em;
+}
+.shelf-image-subtitle {
+	position: relative;
+	padding-top: 0.5em;
+	font-size: 9px;
+}
+.shelf-image-authors {
+	position: absolute;
+	font-size: 11px;
+	padding: 1em 0 1.5em 0;
+	bottom: 0;
+	left: 14px;
+	right: 6px;
+}
+.shelf-image-authors.static {
+	position: static;
+}
+
+.shelf-ie-no-text-shadow {
+	text-shadow: none;
+}
+.shelf-ie-box-shadow {
+	position: absolute;
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='5',MakeShadow='true',ShadowOpacity='0.25');
+	background: black;
+}
+.shelf-ie-text-shadow {
+	position: absolute;
+	left: -2px;
+	right: 2px;
+	top: -1px;
+	bottom: 1px;
+	z-index: -1;
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='2',MakeShadow='true',ShadowOpacity='0.25');
+}
+.shelf-image-title > .shelf-ie-text-shadow {
+	padding-top: 0.5em;
+}
+.shelf-image-subtitle > .shelf-ie-text-shadow {
+	padding-top: 0.5em;
+}
+.shelf-image-authors > .shelf-ie-text-shadow {
+	padding: 1em 0 1.5em 0;
+}

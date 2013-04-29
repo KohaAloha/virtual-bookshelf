@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Curtin University Library">
+	
+	<title>Virtual Bookshelf - Abstract Bookshelf Example</title>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="../public/bookshelf.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(function() {
+			var bookshelf = new VirtualBookshelf.Bookshelf('#bookshelf', {
+				itemWidth: 100,
+				stepInterval: 500,
+				stream: {
+					loadSegment: function(id, context, onload) {
+						onload({
+							id: id,
+							prev: id - 1,
+							next: id + 1,
+							length: 10
+						});
+					},
+					
+					createItem: function(segment, index, context) {
+						return {
+							element: $(
+								'<div class="example-item">' +
+								'<div>Segment</div>' +
+								'<div class="num">' + segment.id + '</div>' +
+								'<div>Index</div>' +
+								'<div class="num">' + index + '</div>' +
+								'</div>')
+						}
+					}
+				}
+			});
+			
+			$('#bookshelf-prev')
+				.click(function() {
+					bookshelf.stepPage(-1);
+				});
+			$('#bookshelf-next')
+				.click(function() {
+					bookshelf.stepPage(1);
+				});
+		});
+	</script>
+	
+	<style type="text/css">
+		.example-item {
+			text-align: center;
+			line-height: 40px;
+			margin-top: 20px;
+			width: 100px;
+			font-weight: bold;
+		}
+		.example-item .num {
+			font-size: 200%;
+		}
+	</style>
+</head>
+<body>
+	<h1>Abstract Bookshelf Example</h1>
+	
+	<div style="width: 702px; margin: 0 auto">
+		<div id="bookshelf" style="width: 700px; height: 200px; border: 1px solid #ccc; margin-bottom: 1em"></div>
+		<button id="bookshelf-next" style="float: right">Next Page</button>
+		<button id="bookshelf-prev" style="float: left">Previous Page</button>
+		<div id="bookshelf-subtitle"></div>
+	</div>
+	
+	<div id="documentation" style="clear: both; padding-top: 1em">
+		<p>This bookshelf demonstrates generation and display of non-image items, using a custom <code>stream</code>.  It is only possible to use arbitrary text like this on a <code>VirtualBookshelf.Bookshelf</code>.  A <code>VirtualBookshelf.Carousel</code> cannot create a 3D scaling effect using text.</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Curtin University Library">
+	
+	<title>Virtual Bookshelf - Bookshelf JSON Files Example</title>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="../public/bookshelf.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(function() {
+			var bookshelf = new VirtualBookshelf.Bookshelf('#bookshelf', {
+				itemAspect: 0.8,
+				spacing: 1.15,
+				startSegment: 'segment1of3.json',
+				stream: new VirtualBookshelf.JSONStream('json/')
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>Bookshelf JSON Files Example</h1>
+	
+	<div id="bookshelf" style="width: 700px; height: 200px; border: 1px solid #ccc; margin: 0 auto 1em auto"></div>
+	
+	<div id="documentation" style="clear: both; padding-top: 1em">
+		<p>This bookshelf loads its items from three separate JSON files, each containing two items.  If you have a large database of items to explore, you may generate JSON files with tens or hundreds of items each, which are chained together using the <code>next</code> and <code>prev</code> fields.  The Bookshelf will only load the files nearby to the current view.</p>
+		<p>Also see the <a href="carousel-json.html">single JSON file example</a>.</p>
+	</div>
+</body>
+</html>

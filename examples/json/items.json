@@ -1,0 +1,36 @@
+{
+	"next": "items.json",
+	"prev": "items.json",
+	"items": [
+		{
+			"title": "The Adventures of Sherlock Holmes",
+			"image": "http://covers.openlibrary.org/b/isbn/9780688107826-M.jpg",
+			"link": "http://en.wikipedia.org/wiki/The_Adventures_of_Sherlock_Holmes"
+		},
+		{
+			"title": "A Christmas Carol",
+			"image": "http://covers.openlibrary.org/b/isbn/9781416534785-M.jpg",
+			"link": "http://en.wikipedia.org/wiki/A_Christmas_Carol"
+		},
+		{
+			"title": "Moby Dick",
+			"image": "http://covers.openlibrary.org/b/isbn/9780205514083-M.jpg",
+			"link": "http://en.wikipedia.org/wiki/Moby_Dick"
+		},
+		{
+			"title": "Pride and Prejudice",
+			"image": "http://covers.openlibrary.org/b/isbn/9780140430745-M.jpg",
+			"link": "http://en.wikipedia.org/wiki/Pride_and_Prejudice"
+		},
+		{
+			"title": "Gulliver's travels",
+			"image": "http://covers.openlibrary.org/b/isbn/9780721417523-M.jpg",
+			"link": "http://en.wikipedia.org/wiki/Gulliver%27s_Travels"
+		},
+		{
+			"title": "Hamlet",
+			"image": "http://covers.openlibrary.org/b/isbn/9781904271550-M.jpg",
+			"link": "http://en.wikipedia.org/wiki/Hamlet"
+		}
+	]
+}

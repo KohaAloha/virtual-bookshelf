@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Curtin University Library">
+	
+	<title>Virtual Bookshelf - Bookshelf Example with Substitutes</title>
+	
+	<link rel="stylesheet" type="text/css" href="css/substitute.css">
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="../public/bookshelf.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(function() {
+			var books = [
+				{
+					title: 'The Adventures of Sherlock Holmes',
+					image: 'http://covers.openlibrary.org/b/isbn/9780688107826-M.jpg',
+					link: 'http://openlibrary.org/works/OL262421W/The_adventures_of_Sherlock_Holmes',
+					subtitle: '',
+					authors: [ 'Sir Arthur Conan Doyle' ]
+				},
+				{
+					title: 'A Christmas Carol',
+					image: 'http://covers.openlibrary.org/b/isbn/9781416534785-M.jpg',
+					link: 'http://openlibrary.org/books/OL11757910M/A_Christmas_Carol_(Enriched_Classics)',
+					subtitle: '',
+					authors: [ 'Charles Dickens' ]
+				},
+				{
+					title: 'Moby Dick',
+					//image: 'http://covers.openlibrary.org/b/isbn/9780205514083-M.jpg',
+					link: 'http://openlibrary.org/works/OL102749W/Moby_Dick',
+					subtitle: '',
+					authors: [ 'Herman Melville' ]
+				},
+				{
+					title: 'Pride and Prejudice',
+					//image: 'http://covers.openlibrary.org/b/isbn/9780140430745-M.jpg',
+					link: 'http://openlibrary.org/works/OL66534W/The_Complete_Novels_of_Jane_Austen',
+					subtitle: '',
+					authors: [ 'Jane Austen' ]
+				},
+				{
+					title: "Gulliver's travels",
+					image: 'http://covers.openlibrary.org/b/isbn/9780721417523-M.jpg',
+					link: "http://openlibrary.org/books/OL7862297M/Gulliver's_Travels_(Classics)",
+					subtitle: '',
+					authors: [ 'Jonathan Swift' ]
+				},
+				{
+					title: 'Hamlet',
+					//image: 'http://covers.openlibrary.org/b/isbn/9781904271550-M.jpg',
+					link: 'http://openlibrary.org/works/OL14915887W/Hamlet',
+					subtitle: 'The Texts of 1603 and 1623',
+					authors: [ 'William Shakespeare' ]
+				}
+			];
+			
+			var imageOptions = {
+				titleFontSize: 18,
+				subtitleFontSize: 9,
+				subtitleMaxHeight: 50,
+				authorsFontSize: 11,
+				authorsMaxHeight: 50,
+				// Be sure to also configure the .shelf-ie-box-shadow CSS for versions of Internet Explorer that do not support box-shadow.
+				boxShadow: '0 1px 10px rgba(0,0,0,0.3)',
+				background: 'images/book200.png',
+			};
+			
+			var bookshelf = new VirtualBookshelf.Bookshelf('#bookshelf', {
+				itemWidth: 168,
+				stream: {
+					loadSegment: function(id, context, onload) {
+						onload({
+							id: id,
+							prev: id,
+							next: id,
+							length: books.length
+						});
+					},
+					
+					createItem: function(segment, index, context) {
+						var book = books[index];
+					
+						// Create container for the item
+						var imageContainer = $('<div class="shelf-image-container">');
+						var a = $('<a>')
+							.attr('href', book.link)
+							.css('display', 'inline-block')
+							.append(imageContainer);
+						var item = {
+							element: a
+						}
+						
+						new VirtualBookshelf.SubstituteImage(imageContainer, book.image, index, book.title, book.subtitle, book.authors, imageOptions);
+						
+						return item;
+					}
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>Bookshelf Example with Substitutes</h1>
+	
+	<div id="bookshelf" style="width: 700px; height: 240px; border: 1px solid #ccc; margin: 0 auto 1em auto"></div>
+	
+	<div id="documentation" style="clear: both; padding-top: 1em">
+		<p>This bookshelf example uses the <code>SubstituteImage</code> class to generate a book cover when its image is unavailable.  The book covers for Moby Dick, Pride and Prejudice, and Hamlet have been removed here to demonstrate the generated images.</p>
+		<p>Unlike the other bookshelves, substitute images must be carefully configured for different sizes using a <a href="css/substitute.css">CSS file</a>.</p>
+	</div>
+</body>
+</html>

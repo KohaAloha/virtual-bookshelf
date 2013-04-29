@@ -1,0 +1,16 @@
+{
+	"next": "segment1of3.json",
+	"prev": "segment2of3.json",
+	"items": [
+		{
+			"title": "Gulliver's travels",
+			"image": "http://covers.openlibrary.org/b/isbn/9780721417523-M.jpg",
+			"link": "http://en.wikipedia.org/wiki/Gulliver%27s_Travels"
+		},
+		{
+			"title": "Hamlet",
+			"image": "http://covers.openlibrary.org/b/isbn/9781904271550-M.jpg",
+			"link": "http://en.wikipedia.org/wiki/Hamlet"
+		}
+	]
+}

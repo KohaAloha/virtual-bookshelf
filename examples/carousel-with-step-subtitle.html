@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Curtin University Library">
+	
+	<title>Virtual Bookshelf - Carousel Example with Step and Subtitles</title>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="../public/bookshelf.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var books = [
+			{
+				title: 'The Adventures of Sherlock Holmes',
+				image: 'http://covers.openlibrary.org/b/isbn/9780688107826-M.jpg',
+				link: 'http://en.wikipedia.org/wiki/The_Adventures_of_Sherlock_Holmes'
+			},
+			{
+				title: 'A Christmas Carol',
+				image: 'http://covers.openlibrary.org/b/isbn/9781416534785-M.jpg',
+				link: 'http://en.wikipedia.org/wiki/A_Christmas_Carol'
+			},
+			{
+				title: 'Moby Dick',
+				image: 'http://covers.openlibrary.org/b/isbn/9780205514083-M.jpg',
+				link: 'http://en.wikipedia.org/wiki/Moby_Dick'
+			},
+			{
+				title: 'Pride and Prejudice',
+				image: 'http://covers.openlibrary.org/b/isbn/9780140430745-M.jpg',
+				link: 'http://en.wikipedia.org/wiki/Pride_and_Prejudice'
+			},
+			{
+				title: "Gulliver's travels",
+				image: 'http://covers.openlibrary.org/b/isbn/9780721417523-M.jpg',
+				link: 'http://en.wikipedia.org/wiki/Gulliver%27s_Travels'
+			},
+			{
+				title: 'Hamlet',
+				image: 'http://covers.openlibrary.org/b/isbn/9781904271550-M.jpg',
+				link: 'http://en.wikipedia.org/wiki/Hamlet'
+			}
+		];
+		
+		$(function() {
+			var bookshelfSubtitle = new VirtualBookshelf.FadeTransition($('#bookshelf-subtitle'), 100, 300);
+			
+			var bookshelf = new VirtualBookshelf.Carousel('#bookshelf', {
+				itemAspect: 0.8,
+				spacing: 1.15,
+				perspective: 0.65,
+				tilt: -0.02,
+				stream: new VirtualBookshelf.ArrayStream(books),
+				onItemFocused: function(book) {
+					bookshelfSubtitle.show($('<div>').text(book.title));
+				}
+			});
+			
+			$('#bookshelf-prev')
+				.click(function() {
+					bookshelf.step(-1);
+				});
+			$('#bookshelf-next')
+				.click(function() {
+					bookshelf.step(1);
+				});
+		});
+	</script>
+</head>
+<body>
+	<h1>Carousel Example with Step and Subtitles</h1>
+	
+	<div style="width: 702px; margin: 0 auto">
+		<div id="bookshelf" style="width: 700px; height: 300px; border: 1px solid #ccc; margin-bottom: 1em"></div>
+		<div id="bookshelf-subtitle" style="text-align: center; height: 0; margin: 0 7em"></div>
+		<button id="bookshelf-next" style="float: right">Next Page</button>
+		<button id="bookshelf-prev" style="float: left">Previous Page</button>
+	</div>
+	
+	<div id="documentation" style="clear: both; padding-top: 1em">
+		<p>This example extends the <a href="../examples/carousel.html">basic carousel</a> example to add Next and Previous item buttons and a subtitle below the center-most book.</p>
+		<p>Subtitles require two changes:
+		<ul>
+			<li>Create a <code>VirtualBookshelf.FadeTransition</code> on an element where we will show the subtitle.</li>
+			<li>Add an <code>options.onItemFocused</code> handler for updating that element with the current text.</li>
+		</ul>
+		</p>
+	</div>
+</body>
+</html>

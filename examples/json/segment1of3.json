@@ -1,0 +1,16 @@
+{
+	"next": "segment2of3.json",
+	"prev": "segment3of3.json",
+	"items": [
+		{
+			"title": "The Adventures of Sherlock Holmes",
+			"image": "http://covers.openlibrary.org/b/isbn/9780688107826-M.jpg",
+			"link": "http://en.wikipedia.org/wiki/The_Adventures_of_Sherlock_Holmes"
+		},
+		{
+			"title": "A Christmas Carol",
+			"image": "http://covers.openlibrary.org/b/isbn/9781416534785-M.jpg",
+			"link": "http://en.wikipedia.org/wiki/A_Christmas_Carol"
+		}
+	]
+}

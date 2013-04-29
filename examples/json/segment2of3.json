@@ -1,0 +1,16 @@
+{
+	"next": "segment3of3.json",
+	"prev": "segment1of3.json",
+	"items": [
+		{
+			"title": "Moby Dick",
+			"image": "http://covers.openlibrary.org/b/isbn/9780205514083-M.jpg",
+			"link": "http://en.wikipedia.org/wiki/Moby_Dick"
+		},
+		{
+			"title": "Pride and Prejudice",
+			"image": "http://covers.openlibrary.org/b/isbn/9780140430745-M.jpg",
+			"link": "http://en.wikipedia.org/wiki/Pride_and_Prejudice"
+		}
+	]
+}

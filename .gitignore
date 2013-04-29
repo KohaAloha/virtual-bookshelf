@@ -1,0 +1,11 @@
+# Automatically downloaded when compiling from source
+/tools/closure/compiler-latest.zip
+/tools/closure/compiler.jar
+/tools/closure/README
+/tools/closure/COPYING
+
+# OS files
+.DS_Store
+
+# wiki in subdirectory
+/wiki
