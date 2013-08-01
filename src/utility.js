@@ -3,12 +3,6 @@
 var DEVICE_PIXEL_RATIO = (window['devicePixelRatio'] > 1) ? window['devicePixelRatio'] : 1;
 
 
-// We know Webkit, Firefox support OPTIONS (TODO: Which versions?).  IE (anything else?) does not.
-// TODO: How to detect this feature?
-// TODO: Primo has currently broken Opera, so I can't test that :-(
-var XSS_JSON_CALLBACK = ($.browser.webkit || $.browser.safari || $.browser.mozilla) ? '' : '?callback=?';
-
-
 function now() {
 	return new Date().getTime();
 }
@@ -117,34 +111,12 @@ function remove(object) {
 }
 
 
-/**
-Get system number from cur_aleph000000000
-*/
-function fromCurAleph(curaleph) {
-	return +curaleph.replace(/^cur_aleph0*/, '');
-}
-
-/**
-Convert system number to cur_aleph000000000
-*/
-function toCurAleph(sysnum) {
-	return 'cur_aleph' + ('00000000' + sysnum).slice(-9);
+// For a linearly changing value 0..1, produce a sin-curve value between 0..1
+function smooth(t) {
+	return (1 - Math.cos(t * Math.PI)) * 0.5;
 }
 
 
-/**
-*/
-function getPrimoCurAlephLink(bookshelfURL, itemCurAleph) {
-	// Send to /book/######?vid=CUR[M].
-	var url = bookshelfURL + 'book/' + itemCurAleph;
-	var vid = /[&?](vid=CURM?)/.exec(window.location.search);
-	if (vid) url += '?' + vid[1];
-	return url;
-}
-
-
-function getSyndeticsImageLink(isbn, format) {
-	return "http://images.syndetics.com/index.aspx?isbn=" + isbn + ":/" + format + "&client=curtinh&type=rn12";
 }
 
 

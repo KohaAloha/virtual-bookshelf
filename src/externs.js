@@ -182,8 +182,7 @@ jQueryObject.prototype = {
 	@param {Function=} out
 	@return {!jQueryObject}
 	*/
-	hover: function(inOrInOut, out) {
-	}
+	hover: function(inOrInOut, out) {}
 }
 
 
@@ -204,11 +203,8 @@ $.ready = function(onready) {}
 */
 $.inArray = function(array, value, fromIndex) {}
 $.browser = {
+	// jQuery detects other browsers, but we only want to sniff IE8.
 	msie: true,
-	webkit: true, // Supported after 1.4, but Primo is only jQuery 1.3
-	safari: true, // Deprecated, but required for Webkit in Primo's jQuery
-	mozilla: true,
-	opera: true,
 	version: ''
 }
 /**
@@ -230,22 +226,6 @@ var console = {
 	*/
 	log: function(varargs) {}
 }
-
-
-// Defined in primo_library/libweb/javascripts/v3.js
-/**
-@constructor
-*/
-function TabSet(idx,id,tabContent,recordId,tabType) {
-	this.state = {};
-}
-function selectAndLoadTab(event, element, tabType) {}
-var exlPrefetchConfiguration = {};
-var exlTabState = {
-	UNFETCHED: 1,
-	REQUESTED: 2,
-	FETCHED: 4
-};
 
 
 /**
