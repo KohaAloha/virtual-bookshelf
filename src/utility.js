@@ -106,17 +106,14 @@ function clamp(lower, value, upper) {
 }
 
 
-function remove(object) {
-	if (object && object['remove']) object['remove']();
-}
-
-
 // For a linearly changing value 0..1, produce a sin-curve value between 0..1
 function smooth(t) {
 	return (1 - Math.cos(t * Math.PI)) * 0.5;
 }
 
 
+function remove(object) {
+	if (object && object['remove']) object['remove']();
 }
 
 

@@ -109,9 +109,11 @@ function SlidingList(container, options, view) {
 				}
 			}
 			if (startItem >= 0 && startItem < this.streamItems.length) {
+				// Always center start image
 				this.x = (view.viewWidth - view.itemSpacing) / 2 - startItem * view.itemSpacing;
 			} else {
-				this.x = 0;
+				// No starting image.  Position first segment according to normal alignment.
+				this.x = view.marginWidth;
 			}
 			this.startX = this.x;
 			this.endX = this.x;
@@ -128,9 +130,9 @@ function SlidingList(container, options, view) {
 			this.endX = last.endX + last.width;
 		} else {
 			// Not ready
-			this.x = 0;
-			this.startX = 0;
-			this.endX = 0;
+			this.x = view.marginWidth;
+			this.startX = view.marginWidth;
+			this.endX = view.marginWidth;
 		}
 		
 		this.updatePosition();
@@ -275,8 +277,7 @@ function SlidingList(container, options, view) {
 	}
 	
 	function updateStepPositions(t) {
-		t = t / animateDuration;
-		t = (1 - Math.cos(t * Math.PI)) * 0.5;
+		t = smooth(t / animateDuration);
 		for (var i = 0; i < segments.length; ++i) {
 			var segment = segments[i];
 			segment.x = segment.startX + t * (segment.endX - segment.startX);
@@ -294,8 +295,7 @@ function SlidingList(container, options, view) {
 				stepTimeout = undefined;
 				
 				var count = 1;
-				var middle = (view.viewWidth - view.itemSpacing) / 2;
-				var step = (middle - segments[0].x) % view.itemSpacing;
+				var step = (view.marginWidth - segments[0].x) % view.itemSpacing;
 				var tollerance = 0.25 * view.itemWidth; // If this close to already-centered, go to next.
 				if (stepDirection < 0) {
 					while (step <= tollerance) step += view.itemSpacing;
@@ -427,8 +427,8 @@ function SlidingList(container, options, view) {
 	}
 	
 	streamContext = {
-		'itemWidth': view.itemWidth,
-		'itemHeight': view.itemHeight,
+		'itemWidth': view.itemFitWidth || view.itemWidth,
+		'itemHeight': view.itemFitHeight || view.itemHeight,
 		'itemSpacing': view.itemSpacing,
 		'refresh': this.refresh
 	}

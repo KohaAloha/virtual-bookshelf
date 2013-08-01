@@ -116,7 +116,7 @@ function Carousel(container, options) {
 		// Size of viewport.  For the carousel, this is the length of the arc that we place items.
 		viewWidth: virtualWidth,
 		// The left or rightmost item should be centered
-		marginWidth: (virtualWidth - itemWidth) / 2,
+		marginWidth: (virtualWidth - itemSpacing) / 2,
 		// Step to next item that isn't the closest
 		stepTollerance: 0.5,
 		

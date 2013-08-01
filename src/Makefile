@@ -7,6 +7,7 @@ JS= \
 	SlidingList.js \
 	Bookshelf.js \
 	Carousel.js \
+	Train.js \
 	FadeTransition.js \
 	SimpleItem.js \
 	SubstituteImage.js \
